@@ -44,9 +44,10 @@ const About: React.FC = () => {
         <div className="lg:w-1/2">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1541913080211-483750244621?auto=format&fit=crop&q=80"
-              alt="Team in cantiere"
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600"
+              alt="Team Rossini Coperture al lavoro"
               className="rounded-[40px] shadow-2xl relative z-10 w-full object-cover h-[500px]"
+              loading="lazy"
             />
             <div className="absolute -bottom-8 -right-8 bg-orange-500 text-white p-10 rounded-[40px] z-20 hidden md:block shadow-2xl cursor-default">
               <span className="block text-5xl font-black font-heading mb-1">25+</span>

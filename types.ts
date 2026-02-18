@@ -11,7 +11,7 @@ export interface Service {
 export interface Project {
   id: number;
   title: string;
-  category: 'Residenziale' | 'Industriale' | 'Bonifica' | 'Restauro' | 'Commerciale';
+  category: 'Residenziale' | 'Industriale' | 'Bonifica' | 'Restauro' | 'Commerciale' | 'Coibentazione';
   description: string;
   year: number;
   image: string;

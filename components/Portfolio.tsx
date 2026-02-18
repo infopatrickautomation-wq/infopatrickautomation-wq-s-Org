@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { PROJECTS_DATA } from '../constants';
 import Lightbox from './Lightbox';
 
@@ -7,37 +7,11 @@ const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState<string>('Tutti');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const categories = ['Tutti', 'Residenziale', 'Industriale', 'Bonifica', 'Restauro'];
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const categories = ['Tutti', 'Residenziale', 'Industriale', 'Bonifica', 'Restauro', 'Coibentazione'];
 
   const filteredProjects = filter === 'Tutti'
     ? PROJECTS_DATA
     : PROJECTS_DATA.filter(p => p.category === filter);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cards = section.querySelectorAll('.portfolio-card');
-            cards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add('fade-in-up');
-              }, index * 100);
-            });
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -56,7 +30,7 @@ const Portfolio: React.FC = () => {
   }));
 
   return (
-    <div className="container mx-auto px-4" ref={sectionRef}>
+    <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold font-heading mb-6">I Nostri Lavori</h2>
         <p className="text-gray-500 max-w-2xl mx-auto mb-10">
@@ -69,8 +43,8 @@ const Portfolio: React.FC = () => {
               key={cat}
               onClick={() => setFilter(cat)}
               className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all cursor-pointer ${filter === cat
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white text-gray-500 border border-gray-200 hover:border-blue-600'
+                ? 'bg-blue-600 text-white shadow-lg'
+                : 'bg-white text-gray-500 border border-gray-200 hover:border-blue-600'
                 }`}
             >
               {cat}
@@ -84,7 +58,10 @@ const Portfolio: React.FC = () => {
           <div
             key={project.id}
             onClick={() => openLightbox(index)}
-            className="portfolio-card group relative overflow-hidden rounded-[30px] bg-gray-200 aspect-[4/3] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer opacity-0"
+            className="portfolio-card group relative overflow-hidden rounded-[30px] bg-gray-200 aspect-[4/3] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+            style={{
+              animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`
+            }}
           >
             <img
               src={project.image}

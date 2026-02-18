@@ -53,12 +53,21 @@ export const SERVICES_DATA: Service[] = [
 ];
 
 export const PROJECTS_DATA: Project[] = [
-  { id: 1, title: 'Villetta Unifamiliare Bologna', category: 'Residenziale', description: 'Rifacimento completo tetto con coibentazione.', year: 2024, image: 'https://picsum.photos/id/10/800/600' },
-  { id: 2, title: 'Condominio Modena', category: 'Residenziale', description: 'Impermeabilizzazione tetto condominiale 8 unità.', year: 2023, image: 'https://picsum.photos/id/20/800/600' },
-  { id: 3, title: 'Capannone Industriale Ferrara', category: 'Industriale', description: 'Copertura metallica coibentata 800mq.', year: 2024, image: 'https://picsum.photos/id/30/800/600' },
-  { id: 4, title: 'Bonifica Amianto Ravenna', category: 'Bonifica', description: 'Rimozione eternit e posa nuova copertura.', year: 2023, image: 'https://picsum.photos/id/40/800/600' },
-  { id: 5, title: 'Ristrutturazione Rustico', category: 'Restauro', description: 'Tetto in legno lamellare con tegole portoghesi.', year: 2024, image: 'https://picsum.photos/id/50/800/600' },
-  { id: 6, title: 'Magazzino Commerciale', category: 'Commerciale', description: 'Copertura veloce con pannelli sandwich.', year: 2023, image: 'https://picsum.photos/id/60/800/600' }
+  // RESIDENZIALE (3)
+  { id: 1, title: 'Villetta Unifamiliare Bologna', category: 'Residenziale', description: 'Rifacimento completo tetto con tegole rosse e coibentazione termica.', year: 2024, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800' },
+  { id: 2, title: 'Casa Moderna Modena', category: 'Residenziale', description: 'Copertura moderna tetto piano con impermeabilizzazione avanzata.', year: 2024, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800' },
+  { id: 3, title: 'Condominio Ristrutturato Parma', category: 'Residenziale', description: 'Ristrutturazione tetto condominiale 12 unità con isolamento.', year: 2023, image: 'https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=800' },
+  // INDUSTRIALE (2)
+  { id: 4, title: 'Capannone Industriale Ferrara', category: 'Industriale', description: 'Copertura metallica coibentata per capannone 1200mq.', year: 2024, image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800' },
+  { id: 5, title: 'Magazzino Logistico Ravenna', category: 'Industriale', description: 'Pannelli sandwich per magazzino logistico con isolamento termico.', year: 2023, image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800' },
+  // BONIFICA (1)
+  { id: 6, title: 'Bonifica Amianto Imola', category: 'Bonifica', description: 'Rimozione certificata eternit e posa nuova copertura in sicurezza.', year: 2023, image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800' },
+  // RESTAURO (1)
+  { id: 7, title: 'Casale Storico Appennino', category: 'Restauro', description: 'Restauro conservativo tetto in legno con coppi originali recuperati.', year: 2024, image: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=800' },
+  // COIBENTAZIONE (1)
+  { id: 8, title: 'Isolamento Termico Villa Cesena', category: 'Coibentazione', description: 'Cappotto termico e isolamento sottotetto con materiali ecologici.', year: 2024, image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800' },
+  // COMMERCIALE (1)
+  { id: 9, title: 'Centro Commerciale Rimini', category: 'Industriale', description: 'Copertura veloce con pannelli sandwich per struttura commerciale.', year: 2023, image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800' }
 ];
 
 export const REVIEWS_DATA: Review[] = [
