@@ -23,13 +23,15 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center space-x-2">
-          <div className={`w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'}`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-          </div>
+        <a href="#home" className="flex items-center space-x-3">
+          <img
+            src="/logo.png"
+            alt="Vertical System"
+            className="h-10 w-auto"
+          />
           <div className="flex flex-col">
-            <span className={`font-bold text-xl leading-none font-heading ${isScrolled ? 'text-gray-900' : 'text-white'}`}>ROSSINI</span>
-            <span className={`text-xs font-semibold tracking-widest ${isScrolled ? 'text-orange-500' : 'text-orange-400'}`}>COPERTURE</span>
+            <span className={`font-bold text-xl leading-none font-heading ${isScrolled ? 'text-gray-900' : 'text-white'}`}>VERTICAL</span>
+            <span className={`text-xs font-semibold tracking-widest ${isScrolled ? 'text-orange-500' : 'text-orange-400'}`}>SYSTEM</span>
           </div>
         </a>
 
@@ -69,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-blue-900 z-40 transition-transform duration-500 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-0 bg-black z-40 transition-transform duration-500 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-6">
           {navLinks.map((link) => (
@@ -91,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               Richiedi Preventivo
             </a>
             <a
-              href="tel:+390511234567"
+              href="tel:+39XXXXXXXXXX"
               className="w-full border-2 border-white/20 text-white text-center py-4 rounded-xl text-lg font-bold flex items-center justify-center space-x-3"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 005.47 5.47l.773-1.548a1 1 0 011.06-.539l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>

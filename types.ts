@@ -1,5 +1,14 @@
-// Fix: Added missing React import to resolve namespace 'React' not found error
+
 import React from 'react';
+
+export enum JobType {
+  RISTRUTTURAZIONE = 'Ristrutturazione',
+  MANUTENZIONE = 'Manutenzione',
+  IMPERMEABILIZZAZIONE = 'Impermeabilizzazione',
+  LINEE_VITA = 'Linee Vita',
+  ISPEZIONI = 'Ispezioni',
+  PULIZIA_GRONDAIE = 'Pulizia Grondaie'
+}
 
 export interface Service {
   id: string;
@@ -11,7 +20,7 @@ export interface Service {
 export interface Project {
   id: number;
   title: string;
-  category: 'Residenziale' | 'Industriale' | 'Bonifica' | 'Restauro' | 'Commerciale' | 'Coibentazione';
+  category: 'Ristrutturazione' | 'Manutenzione' | 'Impermeabilizzazione' | 'Linee Vita' | 'Ispezioni';
   description: string;
   year: number;
   image: string;
@@ -23,15 +32,4 @@ export interface Review {
   rating: number;
   text: string;
   date: string;
-}
-
-export enum JobType {
-  CIVILE = "Rifacimento tetto civile",
-  NUOVA = "Nuova copertura",
-  COIBENTAZIONE = "Coibentazione",
-  IMPERMEABILIZZAZIONE = "Impermeabilizzazione",
-  BONIFICA = "Bonifica amianto",
-  MANUTENZIONE = "Manutenzione",
-  INDUSTRIALE = "Copertura industriale",
-  ALTRO = "Altro"
 }

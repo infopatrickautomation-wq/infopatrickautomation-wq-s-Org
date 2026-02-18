@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 // ── Types ──────────────────────────────────────────────────────────
-type WorkType = 'rifacimento' | 'nuova' | 'coibentazione' | 'impermeabilizzazione' | 'bonifica' | 'manutenzione';
+type WorkType = 'ristrutturazione' | 'manutenzione' | 'impermeabilizzazione' | 'linee_vita' | 'pulizia' | 'ispezioni';
 type Surface = '<50' | '50-100' | '100-200' | '>200' | 'non_so';
 type Building = 'casa' | 'condominio' | 'industriale' | 'altro';
 type Access = 'facile' | 'media' | 'difficile' | 'non_so';
@@ -24,50 +24,50 @@ interface FormData {
 
 // ── Work type options ──────────────────────────────────────────────
 const WORK_TYPES: { id: WorkType; icon: string; title: string; desc: string }[] = [
-  { id: 'rifacimento', icon: '🏠', title: 'Rifacimento Completo Tetto', desc: 'Sostituzione completa copertura esistente' },
-  { id: 'nuova', icon: '🏗️', title: 'Nuova Copertura', desc: 'Copertura per nuova costruzione' },
-  { id: 'coibentazione', icon: '🌡️', title: 'Coibentazione Termica', desc: 'Isolamento termico per risparmio energetico' },
-  { id: 'impermeabilizzazione', icon: '💧', title: 'Impermeabilizzazione', desc: 'Risoluzione infiltrazioni e perdite' },
-  { id: 'bonifica', icon: '⚠️', title: 'Bonifica Amianto', desc: 'Rimozione eternit certificata' },
-  { id: 'manutenzione', icon: '🔧', title: 'Manutenzione / Riparazione', desc: 'Piccoli interventi e riparazioni' },
+  { id: 'ristrutturazione', icon: '🏢', title: 'Ristrutturazione in Quota', desc: 'Interventi su facciate, intonaci, ripristini senza ponteggi' },
+  { id: 'manutenzione', icon: '🎨', title: 'Manutenzione / Tinteggiatura', desc: 'Pulizia, tinteggiatura e restauro facciate' },
+  { id: 'impermeabilizzazione', icon: '💧', title: 'Impermeabilizzazione', desc: 'Risoluzione infiltrazioni e applicazione guaine' },
+  { id: 'linee_vita', icon: '🔒', title: 'Installazione Linee Vita', desc: 'Sistemi anticaduta certificati per coperture' },
+  { id: 'pulizia', icon: '🚿', title: 'Pulizia Grondaie', desc: 'Pulizia, riparazione e sostituzione grondaie' },
+  { id: 'ispezioni', icon: '🔍', title: 'Ispezioni Tecniche', desc: 'Ispezioni visive e strumentali in quota' },
 ];
 
 const WORK_TYPE_LABELS: Record<WorkType, string> = {
-  rifacimento: 'Rifacimento Completo Tetto',
-  nuova: 'Nuova Copertura',
-  coibentazione: 'Coibentazione Termica',
+  ristrutturazione: 'Ristrutturazione in Quota',
+  manutenzione: 'Manutenzione / Tinteggiatura',
   impermeabilizzazione: 'Impermeabilizzazione',
-  bonifica: 'Bonifica Amianto',
-  manutenzione: 'Manutenzione / Riparazione',
+  linee_vita: 'Installazione Linee Vita',
+  pulizia: 'Pulizia Grondaie',
+  ispezioni: 'Ispezioni Tecniche',
 };
 
 const SURFACE_LABELS: Record<Surface, string> = {
-  '<50': '< 50 mq',
-  '50-100': '50-100 mq',
-  '100-200': '100-200 mq',
-  '>200': '> 200 mq',
+  '<50': 'Piccola (1-2 piani)',
+  '50-100': 'Media (3-4 piani)',
+  '100-200': 'Grande (5+ piani)',
+  '>200': 'Molto grande',
   'non_so': 'Non lo so',
 };
 
 const BUILDING_LABELS: Record<Building, string> = {
-  casa: 'Casa / Villetta',
-  condominio: 'Condominio',
-  industriale: 'Capannone / Industriale',
+  casa: 'Residenziale',
+  condominio: 'Commerciale',
+  industriale: 'Industriale',
   altro: 'Altro',
 };
 
-// ── Price calculation ──────────────────────────────────────────────
+// ── Price calculation (rope access pricing) ────────────────────────
 const PRICE_RANGES: Record<WorkType, Record<string, [number, number]>> = {
-  rifacimento: { '<50': [3000, 6000], '50-100': [6000, 12000], '100-200': [8000, 15000], '>200': [15000, 30000] },
-  nuova: { '<50': [4000, 8000], '50-100': [8000, 15000], '100-200': [12000, 25000], '>200': [20000, 40000] },
-  coibentazione: { '<50': [1500, 3000], '50-100': [3000, 6000], '100-200': [5000, 10000], '>200': [8000, 15000] },
-  impermeabilizzazione: { '<50': [1000, 2500], '50-100': [2000, 4500], '100-200': [3500, 7000], '>200': [6000, 12000] },
-  bonifica: { '<50': [2000, 4000], '50-100': [4000, 8000], '100-200': [7000, 14000], '>200': [12000, 25000] },
-  manutenzione: { '<50': [500, 2000], '50-100': [1500, 5000], '100-200': [1500, 5000], '>200': [1500, 5000] },
+  ristrutturazione: { '<50': [1500, 3500], '50-100': [3000, 6000], '100-200': [5000, 12000], '>200': [8000, 18000] },
+  manutenzione: { '<50': [800, 2000], '50-100': [1500, 4000], '100-200': [3500, 8000], '>200': [5000, 12000] },
+  impermeabilizzazione: { '<50': [1000, 2500], '50-100': [2000, 5000], '100-200': [4000, 10000], '>200': [6000, 15000] },
+  linee_vita: { '<50': [800, 1800], '50-100': [1500, 3500], '100-200': [2500, 6000], '>200': [4000, 8000] },
+  pulizia: { '<50': [300, 800], '50-100': [600, 1500], '100-200': [1000, 2500], '>200': [1500, 3500] },
+  ispezioni: { '<50': [200, 500], '50-100': [400, 1000], '100-200': [800, 2000], '>200': [1200, 3000] },
 };
 
 function calculateRange(tipo: WorkType, sup: Surface, edificio: Building): [number, number] | null {
-  const surfKey = sup === 'non_so' ? '100-200' : sup;
+  const surfKey = sup === 'non_so' ? '50-100' : sup;
   const base = PRICE_RANGES[tipo]?.[surfKey];
   if (!base) return null;
   let [min, max] = base;
@@ -83,7 +83,7 @@ function formatCurrency(n: number): string {
 }
 
 // ── Shared styles ──────────────────────────────────────────────────
-const inputClass = 'w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none transition-all text-gray-900';
+const inputClass = 'w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-black outline-none transition-all text-gray-900';
 
 // ── Component ──────────────────────────────────────────────────────
 const QuoteForm: React.FC = () => {
@@ -117,7 +117,7 @@ const QuoteForm: React.FC = () => {
     setStep(s => Math.max(s - 1, 1));
   }, []);
 
-  // ESC to close / go back
+  // ESC to go back
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && step > 1) goBack();
@@ -130,7 +130,6 @@ const QuoteForm: React.FC = () => {
     if (!formData.nome || !formData.telefono || !formData.email || !formData.privacy) return;
     setStatus('loading');
 
-    // Build payload
     const range = formData.tipoLavoro && formData.superficie && formData.tipoEdificio
       ? calculateRange(formData.tipoLavoro, formData.superficie, formData.tipoEdificio)
       : null;
@@ -151,12 +150,6 @@ const QuoteForm: React.FC = () => {
     };
 
     // TODO: Replace with actual webhook URL when n8n is set up
-    // fetch('https://your-n8n-webhook-url.com/webhook/quote', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload),
-    // });
-
     console.log('Quote form payload:', payload);
 
     setTimeout(() => {
@@ -182,8 +175,8 @@ const QuoteForm: React.FC = () => {
           <div className="flex flex-col items-center">
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${s < step ? 'bg-green-500 text-white' :
-                  s === step ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-110' :
-                    'bg-gray-200 text-gray-400'
+                s === step ? 'bg-black text-white shadow-lg shadow-black/30 scale-110' :
+                  'bg-gray-200 text-gray-400'
                 }`}
             >
               {s < step ? (
@@ -192,14 +185,14 @@ const QuoteForm: React.FC = () => {
                 </svg>
               ) : s}
             </div>
-            <span className={`text-[10px] mt-1.5 font-bold uppercase tracking-wider ${s === step ? 'text-blue-600' : 'text-gray-400'}`}>
-              {s === 1 ? 'Lavoro' : s === 2 ? 'Dettagli' : s === 3 ? 'Stima' : 'Contatti'}
+            <span className={`text-[10px] mt-1.5 font-bold uppercase tracking-wider ${s === step ? 'text-black' : 'text-gray-400'}`}>
+              {s === 1 ? 'Servizio' : s === 2 ? 'Dettagli' : s === 3 ? 'Stima' : 'Contatti'}
             </span>
           </div>
           {s < 4 && (
             <div className="flex-1 mx-2 h-1 rounded-full bg-gray-200 overflow-hidden">
               <div
-                className="h-full bg-blue-600 rounded-full transition-all duration-500"
+                className="h-full bg-black rounded-full transition-all duration-500"
                 style={{ width: s < step ? '100%' : '0%' }}
               />
             </div>
@@ -212,8 +205,8 @@ const QuoteForm: React.FC = () => {
   // ── Step 1: Work Type ──────────────────────────────
   const Step1 = () => (
     <div>
-      <h3 className="text-2xl font-bold font-heading text-gray-900 mb-2">Che tipo di intervento ti serve?</h3>
-      <p className="text-gray-500 mb-8">Seleziona il tipo di lavoro per ricevere una stima orientativa.</p>
+      <h3 className="text-2xl font-bold font-heading text-gray-900 mb-2">Di che intervento hai bisogno?</h3>
+      <p className="text-gray-500 mb-8">Seleziona il tipo di servizio per ricevere una stima orientativa.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {WORK_TYPES.map((wt) => (
           <button
@@ -224,8 +217,8 @@ const QuoteForm: React.FC = () => {
               setTimeout(goNext, 200);
             }}
             className={`text-left p-6 rounded-2xl border-2 transition-all duration-200 cursor-pointer group hover:shadow-lg hover:-translate-y-0.5 ${formData.tipoLavoro === wt.id
-                ? 'border-orange-500 bg-orange-50 shadow-md'
-                : 'border-gray-200 bg-white hover:border-blue-400'
+              ? 'border-orange-500 bg-orange-50 shadow-md'
+              : 'border-gray-200 bg-white hover:border-orange-400'
               }`}
           >
             <span className="text-3xl block mb-3">{wt.icon}</span>
@@ -253,8 +246,8 @@ const QuoteForm: React.FC = () => {
             type="button"
             onClick={() => onChange(opt.id)}
             className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${value === opt.id
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              ? 'bg-black text-white shadow-md'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >
             {opt.label}
@@ -268,18 +261,18 @@ const QuoteForm: React.FC = () => {
     const canProceed = formData.superficie && formData.tipoEdificio && formData.accessibilita && formData.urgenza;
     return (
       <div>
-        <h3 className="text-2xl font-bold font-heading text-gray-900 mb-2">Dettagli del progetto</h3>
+        <h3 className="text-2xl font-bold font-heading text-gray-900 mb-2">Dettagli dell'intervento</h3>
         <p className="text-gray-500 mb-8">Queste informazioni ci aiutano a darti una stima più precisa.</p>
 
         <RadioGroup
-          label="📏 Superficie approssimativa"
+          label="📏 Dimensione edificio"
           value={formData.superficie}
           onChange={(v) => setFormData({ ...formData, superficie: v as Surface })}
           options={[
-            { id: '<50', label: '< 50 mq' },
-            { id: '50-100', label: '50-100 mq' },
-            { id: '100-200', label: '100-200 mq' },
-            { id: '>200', label: '> 200 mq' },
+            { id: '<50', label: 'Piccola (1-2 piani)' },
+            { id: '50-100', label: 'Media (3-4 piani)' },
+            { id: '100-200', label: 'Grande (5+ piani)' },
+            { id: '>200', label: 'Molto grande' },
             { id: 'non_so', label: 'Non lo so' },
           ]}
         />
@@ -289,21 +282,21 @@ const QuoteForm: React.FC = () => {
           value={formData.tipoEdificio}
           onChange={(v) => setFormData({ ...formData, tipoEdificio: v as Building })}
           options={[
-            { id: 'casa', label: 'Casa / Villetta' },
-            { id: 'condominio', label: 'Condominio' },
-            { id: 'industriale', label: 'Capannone / Industriale' },
+            { id: 'casa', label: 'Residenziale' },
+            { id: 'condominio', label: 'Commerciale' },
+            { id: 'industriale', label: 'Industriale' },
             { id: 'altro', label: 'Altro' },
           ]}
         />
 
         <RadioGroup
-          label="🪜 Accessibilità tetto"
+          label="🪜 Accessibilità zona di lavoro"
           value={formData.accessibilita}
           onChange={(v) => setFormData({ ...formData, accessibilita: v as Access })}
           options={[
-            { id: 'facile', label: 'Facile (piano terra)' },
-            { id: 'media', label: 'Media (1-2 piani)' },
-            { id: 'difficile', label: 'Difficile (3+ piani)' },
+            { id: 'facile', label: 'Facile (spazio aperto)' },
+            { id: 'media', label: 'Media (zone urbane)' },
+            { id: 'difficile', label: 'Difficile (zone strette)' },
             { id: 'non_so', label: 'Non lo so' },
           ]}
         />
@@ -327,8 +320,8 @@ const QuoteForm: React.FC = () => {
           </button>
           <button type="button" onClick={goNext} disabled={!canProceed}
             className={`flex-1 py-3 rounded-xl font-bold transition-all cursor-pointer ${canProceed
-                ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/20'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/20'
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }`}>
             Vedi Stima →
           </button>
@@ -352,29 +345,29 @@ const QuoteForm: React.FC = () => {
         <p className="text-gray-500 mb-8">Ecco una stima orientativa basata sulle informazioni fornite.</p>
 
         {/* Summary Card */}
-        <div className="bg-gradient-to-br from-blue-950 to-blue-900 text-white rounded-3xl p-8 mb-6 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-black to-gray-900 text-white rounded-3xl p-8 mb-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -mr-20 -mt-20"></div>
           <div className="relative z-10">
-            <p className="text-blue-200 text-sm mb-4">
+            <p className="text-gray-300 text-sm mb-4">
               Per <span className="font-bold text-white">{tipoLabel}</span>,{' '}
               <span className="font-bold text-white">{supLabel}</span>,{' '}
               <span className="font-bold text-white">{buildLabel}</span>
             </p>
-            <p className="text-blue-200 text-xs uppercase tracking-widest mb-2 font-bold">I costi variano da</p>
+            <p className="text-gray-400 text-xs uppercase tracking-widest mb-2 font-bold">I costi variano da</p>
             {range ? (
               <p className="text-4xl md:text-5xl font-black font-heading">
                 <span className="text-orange-400">{formatCurrency(range[0])}</span>
-                <span className="text-blue-300 mx-3 text-2xl">—</span>
+                <span className="text-gray-500 mx-3 text-2xl">—</span>
                 <span className="text-orange-400">{formatCurrency(range[1])}</span>
               </p>
             ) : (
               <p className="text-2xl font-bold text-orange-400">Contattaci per un preventivo personalizzato</p>
             )}
-            <div className="mt-6 space-y-1.5 text-sm text-blue-200">
-              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Materiali scelti</p>
-              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Stato attuale del tetto</p>
-              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Accessibilità cantiere</p>
-              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Eventuali complicazioni strutturali</p>
+            <div className="mt-6 space-y-1.5 text-sm text-gray-300">
+              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Nessun costo ponteggi</p>
+              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Tempi ridotti vs metodo tradizionale</p>
+              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Operatori certificati IRATA/FISAT</p>
+              <p className="flex items-center gap-2"><span className="text-green-400">✓</span> Assicurazione RC completa</p>
             </div>
           </div>
         </div>
@@ -420,11 +413,11 @@ const QuoteForm: React.FC = () => {
           </div>
           <h3 className="text-2xl font-bold font-heading mb-3">Richiesta Inviata!</h3>
           <p className="text-gray-500 mb-6">
-            Grazie! Ti contatteremo entro <span className="font-bold text-blue-600">24 ore</span> per
+            Grazie! Ti contatteremo entro <span className="font-bold text-orange-500">24 ore</span> per
             fissare l'appuntamento per il sopralluogo gratuito.
           </p>
           <button onClick={resetForm}
-            className="text-blue-600 font-bold hover:underline cursor-pointer">
+            className="text-orange-500 font-bold hover:underline cursor-pointer">
             Invia un'altra richiesta
           </button>
         </div>
@@ -439,15 +432,15 @@ const QuoteForm: React.FC = () => {
         </p>
 
         {/* Benefits */}
-        <div className="bg-blue-50 rounded-2xl p-5 mb-8">
-          <p className="text-sm font-bold text-blue-900 mb-3">Durante il sopralluogo:</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-blue-800">
-            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Ispezione completa copertura</p>
-            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Valutazione stato attuale</p>
-            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Preventivo dettagliato</p>
+        <div className="bg-gray-50 rounded-2xl p-5 mb-8 border border-gray-100">
+          <p className="text-sm font-bold text-gray-900 mb-3">Durante il sopralluogo:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Valutazione completa dell'intervento</p>
+            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Analisi accessibilità e sicurezza</p>
+            <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Preventivo dettagliato definitivo</p>
             <p className="flex items-center gap-2"><span className="text-green-600">✓</span> Consigli tecnici professionali</p>
           </div>
-          <p className="text-xs text-blue-600 mt-3 font-medium">⏱️ Durata circa 30-45 minuti</p>
+          <p className="text-xs text-gray-500 mt-3 font-medium">⏱️ Durata circa 30-45 minuti</p>
         </div>
 
         {/* Form */}
@@ -503,12 +496,12 @@ const QuoteForm: React.FC = () => {
           <label className="flex items-start space-x-3 cursor-pointer group">
             <input
               type="checkbox"
-              className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-600 mt-0.5 cursor-pointer"
+              className="w-5 h-5 rounded border-gray-300 text-black focus:ring-black mt-0.5 cursor-pointer"
               checked={formData.privacy}
               onChange={(e) => setFormData({ ...formData, privacy: e.target.checked })}
             />
             <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
-              Accetto la <a href="#" className="underline text-blue-600">Privacy Policy</a> e il trattamento dei dati.
+              Accetto la <a href="#" className="underline text-orange-500">Privacy Policy</a> e il trattamento dei dati.
               I prezzi mostrati sono stime indicative non vincolanti.
             </span>
           </label>
@@ -524,8 +517,8 @@ const QuoteForm: React.FC = () => {
             onClick={handleSubmit}
             disabled={!isValid || status === 'loading'}
             className={`flex-1 py-4 rounded-xl font-bold text-lg transition-all cursor-pointer flex items-center justify-center gap-3 ${isValid
-                ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/20 active:scale-[0.98]'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/20 active:scale-[0.98]'
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }`}
           >
             {status === 'loading' ? (
@@ -588,7 +581,7 @@ const QuoteForm: React.FC = () => {
         {/* Bottom contact info */}
         <div className="text-center mt-8">
           <p className="text-gray-400 text-sm">
-            Oppure contattaci direttamente: <a href="tel:+390511234567" className="text-blue-600 font-bold hover:underline">051 123 4567</a>
+            Oppure contattaci direttamente: <a href="tel:+39XXXXXXXXXX" className="text-orange-500 font-bold hover:underline">+39 XXX XXX XXXX</a>
           </p>
         </div>
       </div>

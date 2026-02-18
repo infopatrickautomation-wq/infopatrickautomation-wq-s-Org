@@ -11,45 +11,45 @@ interface Project {
 const PROJECTS: Project[] = [
     {
         id: 1,
-        title: 'VILLETTA MODERNA BOLOGNA',
-        category: 'Copertura Civile',
+        title: 'RISTRUTTURAZIONE FACCIATA CONDOMINIO',
+        category: 'Ristrutturazione',
         year: 2024,
-        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=600&fit=crop&q=80'
-    },
-    {
-        id: 2,
-        title: 'CONDOMINIO RISTRUTTURATO',
-        category: 'Impermeabilizzazione',
-        year: 2023,
         image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=600&fit=crop&q=80'
     },
     {
-        id: 3,
-        title: 'CAPANNONE INDUSTRIALE',
-        category: 'Copertura Metallica',
+        id: 2,
+        title: 'IMPERMEABILIZZAZIONE TETTO INDUSTRIALE',
+        category: 'Impermeabilizzazione',
         year: 2024,
-        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=600&fit=crop&q=80'
+        image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=1200&h=600&fit=crop&q=80'
+    },
+    {
+        id: 3,
+        title: 'INSTALLAZIONE LINEE VITA',
+        category: 'Sicurezza',
+        year: 2023,
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop&q=80'
     },
     {
         id: 4,
-        title: 'COIBENTAZIONE TERMICA',
-        category: 'Isolamento',
+        title: 'MANUTENZIONE FACCIATA CENTRO STORICO',
+        category: 'Manutenzione',
         year: 2024,
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&h=600&fit=crop&q=80'
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop&q=80'
     },
     {
         id: 5,
-        title: 'BONIFICA AMIANTO',
-        category: 'Rimozione Eternit',
-        year: 2023,
-        image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=600&fit=crop&q=80'
+        title: 'PULIZIA GRONDAIE EDIFICIO ALTO',
+        category: 'Manutenzione',
+        year: 2024,
+        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=600&fit=crop&q=80'
     },
     {
         id: 6,
-        title: 'TETTO VENTILATO',
-        category: 'Legno Lamellare',
-        year: 2024,
-        image: 'https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=1200&h=600&fit=crop&q=80'
+        title: 'ISPEZIONE TECNICA CAPANNONE',
+        category: 'Ispezioni',
+        year: 2023,
+        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=600&fit=crop&q=80'
     }
 ];
 
@@ -74,7 +74,6 @@ const FeaturedProjects: React.FC = () => {
         setIsTransitioning(true);
         setAnimationState('sharp');
 
-        // Fade out current slide
         setTimeout(() => {
             setCurrentSlide((prev) => (prev + 1) % totalSlides);
             setIsTransitioning(false);
@@ -100,26 +99,15 @@ const FeaturedProjects: React.FC = () => {
             return;
         }
 
-        // Animation cycle (10 seconds total)
-        // 0-1s: Fade-in (handled by transition)
-        // 1-3s: Sharp image visible (2s)
-        // 3-5s: Blur wipe animation (2s)
-        // 5-9s: Maintain blurred state (4s)
-        // 9-10s: Fade-out to next
-
         if (animationState === 'sharp') {
-            // Wait 2s, then start blur animation
             timerRef.current = setTimeout(() => {
                 setAnimationState('blurring');
             }, 2000) as unknown as number;
         } else if (animationState === 'blurring') {
-            // Blur animation takes 1.5s, then maintain for 1s
             timerRef.current = setTimeout(() => {
                 setAnimationState('blurred');
             }, 1500) as unknown as number;
         } else if (animationState === 'blurred') {
-            // Hold for 1s, then next slide
-            // Hold for 2s, then next slide
             timerRef.current = setTimeout(() => {
                 nextSlide();
             }, 2000) as unknown as number;
@@ -135,7 +123,7 @@ const FeaturedProjects: React.FC = () => {
             <div className="container mx-auto px-4 mb-12">
                 <div className="text-center max-w-2xl mx-auto">
                     <h2 className="text-4xl font-bold font-heading mb-4">Progetti in Evidenza</h2>
-                    <p className="text-gray-500">Scopri alcuni dei nostri lavori più recenti</p>
+                    <p className="text-gray-500">Scopri alcuni dei nostri interventi più recenti</p>
                 </div>
             </div>
 
@@ -225,7 +213,7 @@ const FeaturedProjects: React.FC = () => {
           }
         `}</style>
 
-                {/* Base Sharp Image (always visible) */}
+                {/* Base Sharp Image */}
                 <div className="absolute inset-0">
                     <img
                         src={currentProject.image}
@@ -235,7 +223,7 @@ const FeaturedProjects: React.FC = () => {
                     />
                 </div>
 
-                {/* Blur Layer (animates from left to right) */}
+                {/* Blur Layer */}
                 <div
                     className={`blur-layer ${animationState === 'blurring' || animationState === 'blurred' ? 'animating' : ''}`}
                     style={{
@@ -249,10 +237,8 @@ const FeaturedProjects: React.FC = () => {
                 <div
                     className={`text-overlay absolute inset-0 flex items-center justify-center ${animationState === 'blurring' || animationState === 'blurred' ? 'visible' : ''}`}
                 >
-                    {/* Divider Line */}
                     <div className="divider-line" />
 
-                    {/* Text Content */}
                     <div className="relative z-10 text-center px-8">
                         <h3
                             className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 font-heading"
@@ -277,7 +263,7 @@ const FeaturedProjects: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Navigation Arrows - Minimal Style */}
+                {/* Navigation Arrows */}
                 <button
                     onClick={() => goToSlide((currentSlide - 1 + totalSlides) % totalSlides)}
                     className="absolute left-4 top-1/2 -translate-y-1/2 w-[50px] h-[50px] flex items-center justify-center transition-all cursor-pointer z-20 group"
@@ -306,7 +292,7 @@ const FeaturedProjects: React.FC = () => {
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`transition-all cursor-pointer ${index === currentSlide
-                            ? 'w-12 h-3 bg-blue-600 rounded-full'
+                            ? 'w-12 h-3 bg-orange-500 rounded-full'
                             : 'w-3 h-3 bg-gray-300 hover:bg-gray-400 rounded-full'
                             }`}
                         aria-label={`Go to project ${index + 1}`}
