@@ -8,7 +8,6 @@ import Services from './components/Services';
 import HowWeWork from './components/HowWeWork';
 import About from './components/About';
 import Certifications from './components/Certifications';
-// import FeaturedProjects from './components/FeaturedProjects';
 import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
