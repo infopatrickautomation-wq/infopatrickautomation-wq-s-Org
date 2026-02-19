@@ -66,13 +66,8 @@ export const PROJECTS_DATA: Project[] = [
   // MANUTENZIONE (2)
   { id: 4, title: 'Tinteggiatura Villa Imola', category: 'Manutenzione', description: 'Tinteggiatura esterna villetta 3 piani senza ponteggi.', year: 2024, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800' },
   { id: 5, title: 'Pulizia Grondaie Ravenna', category: 'Manutenzione', description: 'Pulizia e riparazione grondaie edificio commerciale.', year: 2023, image: 'https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=800' },
-  // IMPERMEABILIZZAZIONE (2)
-  { id: 6, title: 'Impermeabilizzazione Capannone', category: 'Impermeabilizzazione', description: 'Applicazione guaine e impermeabilizzazione copertura industriale 800mq.', year: 2023, image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800' },
-  { id: 7, title: 'Infiltrazioni Condominio Parma', category: 'Impermeabilizzazione', description: 'Risoluzione infiltrazioni tetto condominiale con membrane avanzate.', year: 2024, image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800' },
-  // LINEE VITA (1)
-  { id: 8, title: 'Linee Vita Capannone Bologna', category: 'Linee Vita', description: 'Installazione sistema anticaduta certificato per capannone industriale.', year: 2024, image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800' },
-  // ISPEZIONI (1)
-  { id: 9, title: 'Ispezione Strutturale Rimini', category: 'Ispezioni', description: 'Ispezione visiva e strumentale copertura capannone industriale.', year: 2023, image: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=800' }
+  // IMPERMEABILIZZAZIONE (1)
+  { id: 6, title: 'Impermeabilizzazione Capannone', category: 'Impermeabilizzazione', description: 'Applicazione guaine e impermeabilizzazione copertura industriale 800mq.', year: 2023, image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800' }
 ];
 
 export const REVIEWS_DATA: Review[] = [

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { PROJECTS_DATA } from '../constants';
 
-const ALL_CATEGORIES = ['Tutti', 'Ristrutturazione', 'Manutenzione', 'Impermeabilizzazione', 'Linee Vita', 'Ispezioni'] as const;
+const ALL_CATEGORIES = ['Tutti', 'Ristrutturazione', 'Manutenzione', 'Impermeabilizzazione'] as const;
 
 const Portfolio: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('Tutti');
@@ -29,8 +29,8 @@ const Portfolio: React.FC = () => {
             key={cat}
             onClick={() => setActiveFilter(cat)}
             className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all cursor-pointer ${activeFilter === cat
-                ? 'bg-black text-white shadow-lg'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              ? 'bg-black text-white shadow-lg'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >
             {cat}
