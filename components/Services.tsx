@@ -46,19 +46,31 @@ const Services: React.FC = () => {
         {SERVICES_DATA.map((service) => (
           <div
             key={service.id}
-            className="service-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-black/10 transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-start opacity-0"
+            className="service-card group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-start opacity-0"
           >
-            <div className="mb-6">
-              {service.icon}
+            <div className="relative w-full h-48 overflow-hidden">
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500 z-10"></div>
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-4 left-4 z-20 bg-white/90 backdrop-blur-sm p-2 rounded-xl shadow-sm">
+                {service.icon}
+              </div>
             </div>
-            <h4 className="text-xl font-bold mb-4 text-gray-900 font-heading">{service.title}</h4>
-            <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
-              {service.description}
-            </p>
-            <a href="#preventivo" className="text-orange-500 font-bold text-sm flex items-center space-x-2 group-hover:text-black transition-colors cursor-pointer">
-              <span>Richiedi maggiori info</span>
-              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
-            </a>
+
+            <div className="p-8 flex flex-col flex-grow">
+              <h4 className="text-xl font-bold mb-4 text-gray-900 font-heading group-hover:text-orange-500 transition-colors">{service.title}</h4>
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                {service.description}
+              </p>
+              <a href="#preventivo" className="text-orange-500 font-bold text-sm flex items-center space-x-2 group-hover:text-orange-600 transition-colors cursor-pointer self-start">
+                <span className="border-b-2 border-transparent group-hover:border-orange-500 transition-all">Richiedi maggiori info</span>
+                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
           </div>
         ))}
       </div>

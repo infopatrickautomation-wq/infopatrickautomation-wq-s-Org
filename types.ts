@@ -15,6 +15,7 @@ export interface Service {
   title: string;
   description: string;
   icon: React.ReactNode;
+  image: string;
 }
 
 export interface Project {
