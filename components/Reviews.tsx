@@ -179,8 +179,6 @@ const Reviews: React.FC = () => {
         {/* Carousel Container */}
         <div
           className="overflow-hidden"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <div
             ref={trackRef}
