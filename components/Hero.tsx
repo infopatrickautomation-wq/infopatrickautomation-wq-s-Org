@@ -8,10 +8,10 @@ const Hero: React.FC = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20s] hover:scale-105"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1596496181848-3091d4878b24?q=80&w=2070&auto=format&fit=crop')", // High-res Rope Access image
+          backgroundImage: "url('https://images.unsplash.com/photo-1621905251189-08b9bfd5f578?q=80&w=2069&auto=format&fit=crop')", // Professional Rope Access Technician
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div> {/* 60% Opacity Overlay - Z-index handled by parent context usually, but here it's inside z-0 div, so content needs higher z-index */}
+        <div className="absolute inset-0 bg-[#0F1115]/70"></div> {/* 70% Opacity Dark Overlay for better text contrast */}
       </div>
 
       <div className="container mx-auto px-4 z-10 relative text-center md:text-left">
