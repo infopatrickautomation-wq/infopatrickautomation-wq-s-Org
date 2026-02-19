@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[#0F1115]/70"></div> {/* 70% Opacity Dark Overlay for better text contrast */}
       </div>
 
-      <div className="container mx-auto px-4 z-10 relative text-center md:text-left">
+      <div className="container mx-auto px-4 z-10 relative text-center md:text-left pt-32 md:pt-40">
         <div className="max-w-4xl mx-auto md:mx-0">
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8 opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]">
