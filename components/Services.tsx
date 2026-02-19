@@ -13,12 +13,12 @@ const Services: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const items = section.querySelectorAll('.service-item');
+            const items = section.querySelectorAll('.service-card');
             items.forEach((item, index) => {
               setTimeout(() => {
                 item.classList.add('fade-in-up');
                 item.classList.remove('opacity-0');
-              }, index * 50);
+              }, index * 100);
             });
             observer.disconnect();
           }
@@ -36,29 +36,39 @@ const Services: React.FC = () => {
   }, []);
 
   return (
-    <section id="servizi" className="py-24 bg-gray-50 relative" ref={sectionRef}>
+    <section id="servizi" className="py-24 bg-[#1C1F26] relative" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        {/* Section Header - Left Aligned */}
-        <div className="mb-20 fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold font-heading text-gray-800 mb-2">
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-20 fade-in">
+          <h2 className="text-5xl md:text-6xl font-normal font-heading text-white mb-4 uppercase tracking-[0.05em]">
             I Nostri Servizi
           </h2>
+          <div className="h-1 w-24 bg-orange-500 mx-auto"></div>
         </div>
 
-        {/* Services List Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES_DATA.map((service) => (
             <div
               key={service.id}
-              className="service-item opacity-0 transform transition-all duration-500"
+              className="service-card group p-8 rounded-2xl bg-transparent hover:bg-[#2D3748] transition-all duration-300 border border-white/5 hover:border-white/10 opacity-0"
             >
-              <div className="group cursor-pointer">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-700 mb-4 group-hover:text-orange-500 transition-colors font-heading">
+              <div className="flex flex-col h-full">
+                {/* Icon */}
+                <div className="mb-6 text-white group-hover:text-orange-500 transition-colors duration-300 transform group-hover:scale-110">
+                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-12 h-12" })}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-normal font-heading text-orange-500 mb-4 uppercase tracking-wide">
                   {service.title}
                 </h3>
-                <div className="h-[2px] w-full bg-sky-200 group-hover:bg-orange-500 transition-colors duration-300"></div>
-                {/* Optional: Minimal description on hover or always visible but subtle */}
-                <p className="mt-3 text-sm text-gray-500 opacity-80 leading-relaxed font-light">
+
+                {/* Orange Line Separator */}
+                <div className="h-[3px] w-12 bg-orange-500 mb-6 group-hover:w-20 transition-all duration-300"></div>
+
+                {/* Description */}
+                <p className="text-white/80 leading-relaxed font-light">
                   {service.description}
                 </p>
               </div>
@@ -66,20 +76,20 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom Banner for Consistency */}
-        <div className="mt-24 pt-12 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h4 className="text-2xl font-bold text-gray-800 font-heading mb-2">Non trovi quello che cerchi?</h4>
-              <p className="text-gray-500">Contattaci per una soluzione personalizzata.</p>
-            </div>
-            <a
-              href="#contatti"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-md uppercase tracking-wider text-sm"
-            >
-              Richiedi Info
-            </a>
-          </div>
+        {/* Call to Action Banner */}
+        <div className="mt-24 bg-white/5 border border-white/10 rounded-2xl p-12 text-center backdrop-blur-sm">
+          <h4 className="text-3xl font-heading text-white uppercase mb-4">
+            Soluzioni su misura per ogni esigenza
+          </h4>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Richiedi un sopralluogo gratuito. I nostri tecnici valuteranno l'intervento migliore per te.
+          </p>
+          <a
+            href="#preventivo"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-lg transition-all transform hover:scale-105 uppercase tracking-widest text-sm shadow-lg hover:shadow-orange-500/20"
+          >
+            Contattaci Ora
+          </a>
         </div>
       </div>
     </section>
