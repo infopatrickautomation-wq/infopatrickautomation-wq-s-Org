@@ -2,11 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import WhyChooseUs from './components/WhyChooseUs';
 import Services from './components/Services';
+import HowWeWork from './components/HowWeWork';
 import About from './components/About';
+import Certifications from './components/Certifications';
 import FeaturedProjects from './components/FeaturedProjects';
 import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
+import FAQ from './components/FAQ';
 import QuoteForm from './components/QuoteForm';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -32,26 +36,38 @@ const App: React.FC = () => {
           <Hero />
         </section>
 
-        {/* Featured Projects Section - MOVED BEFORE SERVICES */}
-        <FeaturedProjects />
+        {/* 1. Perché Sceglierci - NEW */}
+        <WhyChooseUs />
 
-        <section id="servizi" className="py-20 bg-white">
+        <section id="servizi" className="py-20 bg-gray-50">
           <Services />
         </section>
 
-        <section id="chi-siamo" className="py-20 bg-gray-50">
+        {/* 2. Come Lavoriamo - NEW */}
+        <HowWeWork />
+
+        <section id="chi-siamo" className="py-20 bg-white">
           <About />
         </section>
 
-        <section id="lavori" className="py-20 bg-white">
+        {/* 3. Certificazioni - NEW */}
+        <Certifications />
+
+        {/* Progetti in Evidenza (carousel) */}
+        <FeaturedProjects />
+
+        <section id="lavori" className="py-20 bg-gray-50">
           <Portfolio />
         </section>
 
-        <section id="recensioni" className="py-20 bg-gray-50 overflow-hidden">
+        <section id="recensioni" className="py-20 bg-white overflow-hidden">
           <Reviews />
         </section>
 
-        <section id="preventivo" className="py-20 bg-white">
+        {/* 4. FAQ - NEW */}
+        <FAQ />
+
+        <section id="preventivo" className="py-20 bg-gray-50">
           <QuoteForm />
         </section>
 

@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
           {/* Contact info */}
           <div className="space-y-4">
             <h4 className="text-white font-bold uppercase text-xs tracking-widest">Contatti</h4>
-            <p className="text-sm">📍 Emilia-Romagna</p>
+            <p className="text-sm">📍 Sede: Altedo, Ferrara (FE) — Emilia-Romagna</p>
             <p className="text-sm">📞 +39 XXX XXX XXXX</p>
             <p className="text-sm">📧 info@verticalsystem.it</p>
             <div className="pt-4 flex items-center space-x-2 text-white">

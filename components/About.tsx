@@ -83,6 +83,10 @@ const About: React.FC = () => {
               {' '}con anni di esperienza in lavori edili complessi. Ogni intervento
               è eseguito secondo le più rigide normative di sicurezza.
             </p>
+            <p>
+              Con sede operativa ad <strong className="text-gray-900">Altedo</strong>, nel cuore della provincia di Ferrara,
+              serviamo tutta l'Emilia-Romagna e zone limitrofe con interventi rapidi e professionali.
+            </p>
           </div>
         </div>
       </div>
