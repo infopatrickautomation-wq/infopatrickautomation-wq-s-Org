@@ -36,35 +36,36 @@ const App: React.FC = () => {
           <Hero />
         </section>
 
-        {/* 1. Perché Sceglierci - NEW */}
+        {/* 1. Progetti in Evidenza (Moved here) */}
+        <FeaturedProjects />
+
+        {/* 2. Certificazioni (Moved here, before WhyChooseUs) */}
+        <Certifications />
+
+        {/* 3. Perché Sceglierci (Moved here, after Certifications) */}
         <WhyChooseUs />
 
+        {/* 4. Portfolio (Moved here, before Services) */}
+        <section id="lavori" className="py-20 bg-gray-50">
+          <Portfolio />
+        </section>
+
+        {/* 5. Servizi */}
         <section id="servizi" className="py-20 bg-gray-50">
           <Services />
         </section>
 
-        {/* 2. Come Lavoriamo - NEW */}
+        {/* 6. Come Lavoriamo */}
         <HowWeWork />
 
         <section id="chi-siamo" className="py-20 bg-white">
           <About />
         </section>
 
-        {/* 3. Certificazioni - NEW */}
-        <Certifications />
-
-        {/* Progetti in Evidenza (carousel) */}
-        <FeaturedProjects />
-
-        <section id="lavori" className="py-20 bg-gray-50">
-          <Portfolio />
-        </section>
-
         <section id="recensioni" className="py-20 bg-white overflow-hidden">
           <Reviews />
         </section>
 
-        {/* 4. FAQ - NEW */}
         <FAQ />
 
         <section id="preventivo" className="py-20 bg-gray-50">
