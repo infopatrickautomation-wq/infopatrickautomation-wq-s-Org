@@ -18,37 +18,43 @@ export const SERVICES_DATA: Service[] = [
     id: 's1',
     title: 'Ristrutturazione in Quota',
     description: 'Interventi edili su edifici alti: intonacatura, tinteggiatura, ripristino facciate senza ponteggi.',
-    icon: <span className="text-4xl">🏢</span>
+    icon: <span className="text-4xl">🏢</span>,
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80'
   },
   {
     id: 's2',
     title: 'Manutenzione Facciate',
     description: 'Pulizia, tinteggiatura e restauro facciate di edifici residenziali, commerciali e industriali.',
-    icon: <span className="text-4xl">🎨</span>
+    icon: <span className="text-4xl">🎨</span>,
+    image: 'https://images.unsplash.com/photo-1599708153386-73d8d69f0bd6?w=800&q=80'
   },
   {
     id: 's3',
     title: 'Impermeabilizzazioni',
     description: 'Risoluzione infiltrazioni, applicazione guaine, impermeabilizzazioni di coperture e pareti.',
-    icon: <span className="text-4xl">💧</span>
+    icon: <span className="text-4xl">💧</span>,
+    image: 'https://images.unsplash.com/photo-1621261313436-b6ad4860df89?w=800&q=80'
   },
   {
     id: 's4',
     title: 'Installazione Linee Vita',
     description: 'Installazione sistemi anticaduta certificati per accesso e manutenzione coperture.',
-    icon: <span className="text-4xl">🔒</span>
+    icon: <span className="text-4xl">🔒</span>,
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80'
   },
   {
     id: 's5',
     title: 'Pulizia Grondaie',
     description: 'Pulizia, riparazione e sostituzione grondaie e pluviali in quota.',
-    icon: <span className="text-4xl">🚿</span>
+    icon: <span className="text-4xl">🚿</span>,
+    image: 'https://images.unsplash.com/photo-1616423640778-2cfd9b972e66?w=800&q=80'
   },
   {
     id: 's6',
     title: 'Ispezioni Tecniche',
     description: 'Ispezioni visive e strumentali di strutture in quota, ponti, capannoni, ciminiere.',
-    icon: <span className="text-4xl">🔍</span>
+    icon: <span className="text-4xl">🔍</span>,
+    image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&q=80'
   }
 ];
 

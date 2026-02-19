@@ -28,8 +28,28 @@
     <link rel="apple-touch-icon" href="/logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#FF8C00',
+                    },
+                    fontFamily: {
+                        heading: ['"Bebas Neue"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                        cta: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
         rel="stylesheet">
+
     <style>
         /* Design System - Vertical System */
         :root {
@@ -41,8 +61,9 @@
             --color-text: #1E293B;
 
             /* Typography */
-            --font-heading: 'Inter', sans-serif;
+            --font-heading: 'Bebas Neue', sans-serif;
             --font-body: 'Inter', sans-serif;
+            --font-cta: 'Montserrat', sans-serif;
         }
 
         html {
@@ -60,6 +81,31 @@
         h4,
         .font-heading {
             font-family: var(--font-heading);
+            letter-spacing: 0.05em;
+            /* Bebas Neue often looks better with slight spacing */
+        }
+
+        button,
+        .btn,
+        .cta-text {
+            font-family: var(--font-cta);
+        }
+
+        /* Utility Classes */
+        .text-brand {
+            color: var(--color-cta);
+        }
+
+        .highlight-text {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 140, 0, 0.3) 50%);
+            display: inline;
+        }
+
+        .underline-thick {
+            text-decoration: underline;
+            text-decoration-color: var(--color-cta);
+            text-decoration-thickness: 4px;
+            text-underline-offset: 4px;
         }
 
         /* Fade-in Animation System */
