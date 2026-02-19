@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="space-y-6">
             <a href="#home" className="flex items-center space-x-3 cursor-pointer">
-              <img src="/logo.png" alt="Vertical System" className="h-8 w-auto brightness-0 invert" />
+              <img src="/logo-footer-new.png" alt="Vertical System" className="h-8 w-auto brightness-0 invert" />
               <div className="flex flex-col">
                 <span className="font-bold text-white text-lg leading-none font-heading uppercase tracking-tighter">Vertical</span>
                 <span className="text-[8px] font-bold text-orange-500 tracking-[0.2em] uppercase leading-none">System</span>
