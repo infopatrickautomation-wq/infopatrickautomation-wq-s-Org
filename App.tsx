@@ -39,11 +39,11 @@ const App: React.FC = () => {
         {/* 1. Intro Stats (New Section) */}
         <IntroStats />
 
-        {/* 2. Certificazioni */}
-        <Certifications />
-
-        {/* 3. Perché Sceglierci (Moved here, after Certifications) */}
+        {/* 2. Perché Sceglierci (Moved here, before Certifications) */}
         <WhyChooseUs />
+
+        {/* 3. Certificazioni */}
+        <Certifications />
 
         {/* 4. Portfolio (Moved here, before Services) */}
         <section id="lavori" className="py-20 bg-gray-50">
