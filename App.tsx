@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HeroProjects from './components/HeroProjects';
+import IntroStats from './components/IntroStats';
 import WhyChooseUs from './components/WhyChooseUs';
 import Services from './components/Services';
 import HowWeWork from './components/HowWeWork';
@@ -36,9 +37,10 @@ const App: React.FC = () => {
           <HeroProjects />
         </section>
 
-        {/* 1. Progetti in Evidenza (RIMOSSO - Ora è la Hero) */}
+        {/* 1. Intro Stats (New Section) */}
+        <IntroStats />
 
-        {/* 2. Certificazioni (Moved here, before WhyChooseUs) */}
+        {/* 2. Certificazioni */}
         <Certifications />
 
         {/* 3. Perché Sceglierci (Moved here, after Certifications) */}
