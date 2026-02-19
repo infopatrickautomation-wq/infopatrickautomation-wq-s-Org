@@ -29,9 +29,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           <img
             src="/logo-header-new.png"
             alt="Vertical System"
-            className={`w-auto transition-all duration-300 ${isScrolled ? 'h-[60px]' : 'h-[100px]'
-              } max-[768px]:${isScrolled ? 'h-[50px]' : 'h-[80px]'}`}
-            style={{ height: isScrolled ? '60px' : '100px' }}
+            className={`w-auto transition-all duration-300 ${isScrolled ? 'h-[75px]' : 'h-[125px]'
+              } max-[768px]:${isScrolled ? 'h-[60px]' : 'h-[95px]'}`}
+            style={{ height: isScrolled ? '75px' : '125px' }}
           />
         </a>
 
