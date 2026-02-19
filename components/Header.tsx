@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         {/* Logo - Grande stile SEA SRL */}
         <a href="#home" className="flex items-center flex-shrink-0">
           <img
-            src="/logo-header-new-removebg-preview.png"
+            src="/logo-header-new.png"
             alt="Vertical System"
             className={`w-auto transition-all duration-300 ${isScrolled ? 'h-[60px]' : 'h-[100px]'
               } max-[768px]:${isScrolled ? 'h-[50px]' : 'h-[80px]'}`}
