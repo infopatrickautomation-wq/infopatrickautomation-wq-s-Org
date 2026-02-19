@@ -102,9 +102,6 @@ const Certifications: React.FC = () => {
                     width: max-content;
                     animation: marquee 30s linear infinite;
                 }
-                .pause-on-hover:hover .animate-marquee {
-                    animation-play-state: paused;
-                }
             `}</style>
 
             <div className="container mx-auto px-4 mb-20">
@@ -116,7 +113,7 @@ const Certifications: React.FC = () => {
                 </div>
 
                 {/* Infinite Scroll Marquee */}
-                <div className="relative w-full overflow-hidden pause-on-hover bg-white/50 backdrop-blur-sm py-10">
+                <div className="relative w-full overflow-hidden bg-white/50 backdrop-blur-sm py-10">
                     <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
                     <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
 
