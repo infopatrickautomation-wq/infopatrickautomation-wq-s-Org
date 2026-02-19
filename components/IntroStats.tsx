@@ -106,7 +106,7 @@ const IntroStats: React.FC = () => {
         >
             <div className="container mx-auto px-4">
                 {/* Header Content */}
-                <div className={`max-w-4xl mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1 rounded-full mb-6">
                         <div className="flex items-center space-x-2">
                             <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
@@ -121,10 +121,15 @@ const IntroStats: React.FC = () => {
                         <span className="text-orange-500">Tecnica su Funi</span>
                     </h2>
 
-                    <p className="text-xl text-gray-300 max-w-2xl font-light leading-relaxed">
-                        Specializzati in edilizia acrobatica per interventi rapidi, sicuri ed economici.
-                        Eliminiamo i costi e gli ingombri dei ponteggi tradizionali.
+                    <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                        La nostra specializzazione in <strong>edilizia acrobatica</strong> ci permette di offrire interventi rapidi ed efficaci senza l'uso di ponteggi.
+                        Garantiamo la massima sicurezza e un notevole risparmio sui costi di occupazione suolo pubblico.
                     </p>
+
+                    <a href="#chi-siamo" className="inline-flex items-center text-orange-500 font-bold tracking-wider uppercase text-sm hover:text-white transition-colors group">
+                        Scopri di più
+                        <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
                 </div>
 
                 {/* Stats Grid */}
