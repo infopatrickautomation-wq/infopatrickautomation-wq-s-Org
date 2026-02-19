@@ -59,14 +59,21 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 opacity-0 animate-[fadeIn_1s_ease-out_1.5s_forwards] cursor-pointer" onClick={() => {
-        const nextSection = document.getElementById('featured-projects'); // Assuming Next section is featured projects based on rewrite
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 opacity-0 animate-[fadeIn_1s_ease-out_1.5s_forwards] cursor-pointer z-20" onClick={() => {
+        const nextSection = document.getElementById('featured-projects');
         if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
         else window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
       }}>
         <div className="w-[30px] h-[50px] rounded-full border-2 border-white/30 flex justify-center p-2">
           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-bounce"></div>
         </div>
+      </div>
+
+      {/* Shape Divider */}
+      <div className="shape-divider-bottom shape-divider-bottom-dark z-10 pointer-events-none">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>
+        </svg>
       </div>
     </div>
   );

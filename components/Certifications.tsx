@@ -94,7 +94,7 @@ const Certifications: React.FC = () => {
     }, []);
 
     return (
-        <section id="certificazioni" className="py-20 bg-white" ref={sectionRef}>
+        <section id="certificazioni" className="py-24 bg-pattern-dots relative overflow-hidden" ref={sectionRef}>
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-2xl mx-auto mb-16 cert-anim" style={{ opacity: 0, transform: 'translateY(30px)', transition: 'all 0.6s ease-out' }}>

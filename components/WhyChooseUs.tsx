@@ -77,82 +77,95 @@ const WhyChooseUs: React.FC = () => {
                         });
                         observer.disconnect();
                     }
-                });
-            },
-            { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
-        );
+                    return (
+                        <section id="why-choose-us" className="py-24 bg-[#1C1F26] text-white relative overflow-hidden">
+                            <div className="container mx-auto px-4 relative z-10">
+                                <div className="text-center max-w-3xl mx-auto mb-16 fade-in">
+                                    <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading">Perché Scegliere <span className="text-brand">Vertical System</span></h2>
+                                    <p className="text-xl text-gray-300 font-light">
+                                        Il metodo Rope Access offre vantaggi impareggiabili rispetto ai ponteggi tradizionali.
+                                        Efficienza, risparmio e sicurezza senza compromessi.
+                                    </p>
+                                </div>
 
-        observer.observe(section);
-        return () => observer.disconnect();
-    }, []);
+                                {/* Comparison Table */}
+                                <div className="bg-[#2D3748] rounded-3xl p-8 md:p-12 shadow-2xl mb-20 fade-in fade-in-delay-1 border border-gray-700">
+                                    <h3 className="text-2xl font-bold mb-8 text-center font-heading">Confronto Diretto</h3>
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left border-collapse">
+                                            <thead>
+                                                <tr className="border-b border-gray-600">
+                                                    <th className="py-4 px-6 text-gray-400 font-medium uppercase tracking-wider w-1/3">Caratteristica</th>
+                                                    <th className="py-4 px-6 text-brand font-bold text-lg w-1/3">Rope Access</th>
+                                                    <th className="py-4 px-6 text-gray-500 font-medium w-1/3">Ponteggi Tradizionali</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-700">
+                                                <tr className="hover:bg-white/5 transition-colors">
+                                                    <td className="py-6 px-6 font-medium">Costi di Allestimento</td>
+                                                    <td className="py-6 px-6 text-green-400 font-bold">Zero (Nessun ponteggio)</td>
+                                                    <td className="py-6 px-6 text-gray-400">Elevati (Montaggio/Smontaggio)</td>
+                                                </tr>
+                                                <tr className="hover:bg-white/5 transition-colors">
+                                                    <td className="py-6 px-6 font-medium">Tempi di Intervento</td>
+                                                    <td className="py-6 px-6 text-green-400 font-bold">Immediati (Operativi in 1h)</td>
+                                                    <td className="py-6 px-6 text-gray-400">Lunghi (Giorni di preparazione)</td>
+                                                </tr>
+                                                <tr className="hover:bg-white/5 transition-colors">
+                                                    <td className="py-6 px-6 font-medium">Impatto Visivo</td>
+                                                    <td className="py-6 px-6 text-green-400 font-bold">Invisibile</td>
+                                                    <td className="py-6 px-6 text-gray-400">Ingombrante e antiestetico</td>
+                                                </tr>
+                                                <tr className="hover:bg-white/5 transition-colors">
+                                                    <td className="py-6 px-6 font-medium">Sicurezza Furti</td>
+                                                    <td className="py-6 px-6 text-green-400 font-bold">Massima (Nessun accesso)</td>
+                                                    <td className="py-6 px-6 text-gray-400">Rischio (Facilita l'accesso)</td>
+                                                </tr>
+                                                <tr className="hover:bg-white/5 transition-colors">
+                                                    <td className="py-6 px-6 font-medium">Permessi Suolo Pubblico</td>
+                                                    <td className="py-6 px-6 text-green-400 font-bold">Non Necessari</td>
+                                                    <td className="py-6 px-6 text-gray-400">Obbligatori e Costosi</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-    return (
-        <section id="perche-sceglierci" className="py-20 bg-white" ref={sectionRef}>
-            <div className="container mx-auto px-4">
-                {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 anim-item" style={{ opacity: 0, transform: 'translateY(30px)', transition: 'all 0.6s ease-out' }}>
-                    <h2 className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-3">Perché Sceglierci</h2>
-                    <h3 className="text-3xl md:text-4xl font-bold font-heading mb-4">Perché Scegliere Vertical System</h3>
-                    <p className="text-lg text-gray-500 mb-2 font-semibold">Rope Access: La Soluzione Moderna per Lavori in Quota</p>
-                    <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full mb-6"></div>
-                    <p className="text-gray-600 leading-relaxed">
-                        La tecnica su funi (rope access) è il metodo più sicuro, veloce ed economico per interventi in altezza. Niente ponteggi, niente piattaforme aeree, niente complicazioni.
-                    </p>
-                </div>
+                                {/* Benefits Grid */}
+                                <div className="grid md:grid-cols-3 gap-8 fade-in fade-in-delay-2">
+                                    <div className="bg-[#2D3748] p-8 rounded-3xl border border-gray-700 hover:border-brand/50 transition-all duration-300 group hover:-translate-y-2">
+                                        <div className="w-16 h-16 bg-brand/20 rounded-2xl flex items-center justify-center mb-6 text-brand group-hover:scale-110 transition-transform">
+                                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                        </div>
+                                        <h3 className="text-2xl font-bold mb-4 font-heading">Risparmio al 40%</h3>
+                                        <p className="text-gray-400 leading-relaxed">
+                                            Abbattiamo i costi fissi del cantiere. Paghi solo per il lavoro effettivo, non per le strutture di supporto.
+                                        </p>
+                                    </div>
 
-                {/* Comparison Table */}
-                <div className="anim-item max-w-5xl mx-auto mb-16" style={{ opacity: 0, transform: 'translateY(30px)', transition: 'all 0.6s ease-out 0.1s' }}>
-                    {/* Table Header */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-t-3xl overflow-hidden">
-                        <div className="bg-green-800 text-white p-5 text-center">
-                            <span className="text-2xl mr-2">🎯</span>
-                            <span className="font-bold text-lg font-heading">ROPE ACCESS</span>
-                            <p className="text-green-200 text-sm mt-1">La Nostra Tecnica</p>
-                        </div>
-                        <div className="bg-gray-600 text-white p-5 text-center">
-                            <span className="text-2xl mr-2">🏗️</span>
-                            <span className="font-bold text-lg font-heading">PONTEGGI TRADIZIONALI</span>
-                            <p className="text-gray-300 text-sm mt-1">Metodo Vecchio</p>
-                        </div>
-                    </div>
+                                    <div className="bg-[#2D3748] p-8 rounded-3xl border border-gray-700 hover:border-brand/50 transition-all duration-300 group hover:-translate-y-2">
+                                        <div className="w-16 h-16 bg-brand/20 rounded-2xl flex items-center justify-center mb-6 text-brand group-hover:scale-110 transition-transform">
+                                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                        </div>
+                                        <h3 className="text-2xl font-bold mb-4 font-heading">Intervento Rapido</h3>
+                                        <p className="text-gray-400 leading-relaxed">
+                                            Nessun tempo perso per montaggio ponteggi. Arriviamo, ci caliamo, lavoriamo. Ideale per urgenze.
+                                        </p>
+                                    </div>
 
-                    {/* Table Rows */}
-                    {comparisonData.map((row, index) => (
-                        <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-0 border-b border-gray-200 last:rounded-b-3xl overflow-hidden">
-                            <div className="bg-green-50 p-5 border-r border-gray-200">
-                                <p className="font-bold text-sm text-green-800 mb-1">{row.category}</p>
-                                <p className="text-gray-800 text-sm leading-relaxed">{row.ropeAccess}</p>
+                                    <div className="bg-[#2D3748] p-8 rounded-3xl border border-gray-700 hover:border-brand/50 transition-all duration-300 group hover:-translate-y-2">
+                                        <div className="w-16 h-16 bg-brand/20 rounded-2xl flex items-center justify-center mb-6 text-brand group-hover:scale-110 transition-transform">
+                                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                                        </div>
+                                        <h3 className="text-2xl font-bold mb-4 font-heading">Zero Intrusioni</h3>
+                                        <p className="text-gray-400 leading-relaxed">
+                                            Nessuna impalcatura davanti alle finestre. Privacy garantita e nessun rischio di furti agevolati dai ponteggi.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="bg-gray-50 p-5">
-                                <p className="font-bold text-sm text-gray-500 mb-1 md:hidden">{row.category}</p>
-                                <p className="text-gray-500 text-sm leading-relaxed">{row.traditional}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                        </section>
+                    );
+                };
 
-                {/* Benefit Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    {benefitCards.map((card, index) => (
-                        <div
-                            key={index}
-                            className="anim-item bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center"
-                            style={{
-                                opacity: 0,
-                                transform: 'translateY(30px)',
-                                transition: `all 0.6s ease-out ${0.2 + index * 0.1}s`,
-                                borderTop: '4px solid #FF8C00',
-                            }}
-                        >
-                            <span className="text-5xl block mb-4">{card.icon}</span>
-                            <h4 className="font-bold text-lg mb-3 font-heading text-gray-900">{card.title}</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">{card.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-export default WhyChooseUs;
+                export default WhyChooseUs;

@@ -108,6 +108,44 @@
             text-underline-offset: 4px;
         }
 
+        /* Layout Enhancements */
+        .bg-pattern-dots {
+            background-color: #ffffff;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .shadow-soft {
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(137% + 1.3px);
+            height: 60px;
+        }
+
+        .shape-divider-bottom .shape-fill {
+            fill: #ffffff;
+        }
+
+        /* Dark Theme Divider Fix */
+        .shape-divider-bottom-dark .shape-fill {
+            fill: #1C1F26;
+            /* Matches Dark Theme Section */
+        }
+
         /* Fade-in Animation System */
         @keyframes fadeIn {
             from {
