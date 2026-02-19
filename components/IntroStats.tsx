@@ -102,34 +102,44 @@ const IntroStats: React.FC = () => {
     return (
         <section
             ref={sectionRef}
-            className="py-20 bg-[#1C1F26] text-white relative overflow-hidden"
+            className="py-20 bg-white text-gray-900 relative overflow-hidden"
         >
             <div className="container mx-auto px-4">
                 {/* Header Content */}
                 <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1 rounded-full mb-6">
+                    <div className="inline-block bg-orange-50 border border-orange-100 px-4 py-1 rounded-full mb-6">
                         <div className="flex items-center space-x-2">
                             <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-                            <span className="text-xs font-bold tracking-widest uppercase text-white/90 font-heading">
+                            <span className="text-xs font-bold tracking-widest uppercase text-orange-600 font-heading">
                                 Specialisti Rope Access Emilia-Romagna
                             </span>
                         </div>
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl font-heading uppercase leading-tight mb-6">
+                    <h2 className="text-5xl md:text-7xl font-heading uppercase leading-tight mb-6 text-gray-900">
                         Lavori Edili in Quota <br />
                         <span className="text-orange-500">Tecnica su Funi</span>
                     </h2>
 
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                    <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed mb-8">
                         La nostra specializzazione in <strong>edilizia acrobatica</strong> ci permette di offrire interventi rapidi ed efficaci senza l'uso di ponteggi.
                         Garantiamo la massima sicurezza e un notevole risparmio sui costi di occupazione suolo pubblico.
                     </p>
 
-                    <a href="#chi-siamo" className="inline-flex items-center text-orange-500 font-bold tracking-wider uppercase text-sm hover:text-white transition-colors group">
-                        Scopri di più
-                        <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </a>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a
+                            href="#preventivo"
+                            className="px-8 py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors shadow-lg hover:shadow-orange-500/30 uppercase tracking-wide"
+                        >
+                            Prenota il tuo preventivo
+                        </a>
+                        <a
+                            href="#servizi"
+                            className="px-8 py-3 bg-white text-gray-900 border-2 border-gray-200 font-bold rounded-lg hover:border-orange-500 hover:text-orange-500 transition-colors uppercase tracking-wide"
+                        >
+                            Scopri i nostri servizi
+                        </a>
+                    </div>
                 </div>
 
                 {/* Stats Grid */}
@@ -138,34 +148,35 @@ const IntroStats: React.FC = () => {
                         <div
                             key={stat.id}
                             className={`
-                relative group p-8 rounded-2xl border-2 border-orange-500/30 hover:border-orange-500 
+                relative group p-8 rounded-2xl border border-gray-200 hover:border-orange-500 
                 transition-all duration-500 transform hover:-translate-y-2
-                ${index % 2 === 0 ? 'bg-[#1C1F26]' : 'bg-[#111827]'}
+                ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
                 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+                shadow-sm hover:shadow-xl
               `}
                             style={{ transitionDelay: `${index * 200}ms` }}
                         >
-                            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
                                 {stat.icon}
                             </div>
 
                             <div className="flex flex-col h-full justify-between relative z-10">
                                 <div className="mb-4">
-                                    <span className="inline-block p-3 rounded-lg bg-orange-500/10 text-orange-500 mb-4">
+                                    <span className="inline-block p-3 rounded-lg bg-orange-100 text-orange-500 mb-4">
                                         {stat.icon}
                                     </span>
                                 </div>
 
                                 <div>
                                     <div className="flex items-baseline space-x-1 mb-2">
-                                        <span className="text-5xl font-bold font-heading text-white">
+                                        <span className="text-5xl font-bold font-heading text-gray-900">
                                             {counts[index]}
                                         </span>
                                         <span className="text-3xl font-bold text-orange-500">
                                             {stat.suffix}
                                         </span>
                                     </div>
-                                    <p className="text-gray-400 font-medium uppercase tracking-wider text-sm">
+                                    <p className="text-gray-500 font-medium uppercase tracking-wider text-sm">
                                         {stat.label}
                                     </p>
                                 </div>
