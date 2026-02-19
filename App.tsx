@@ -5,7 +5,6 @@ import HeroProjects from './components/HeroProjects';
 import IntroStats from './components/IntroStats';
 import WhyChooseUs from './components/WhyChooseUs';
 import Services from './components/Services';
-import HowWeWork from './components/HowWeWork';
 import About from './components/About';
 import Certifications from './components/Certifications';
 import Portfolio from './components/Portfolio';
@@ -45,21 +44,19 @@ const App: React.FC = () => {
         {/* 3. Certificazioni */}
         <Certifications />
 
-        {/* 4. Portfolio (Moved here, before Services) */}
-        <section id="lavori" className="py-20 bg-gray-50">
-          <Portfolio />
-        </section>
-
         {/* 5. Servizi */}
         <section id="servizi" className="py-20 bg-gray-50">
           <Services />
         </section>
 
-        {/* 6. Come Lavoriamo */}
-        <HowWeWork />
-
+        {/* 6. Chi Siamo (Moved here) */}
         <section id="chi-siamo" className="py-20 bg-white">
           <About />
+        </section>
+
+        {/* 7. Portfolio (Moved here, after Chi Siamo) */}
+        <section id="lavori" className="py-20 bg-gray-50">
+          <Portfolio />
         </section>
 
         <section id="recensioni" className="py-20 bg-white overflow-hidden">
