@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Briefcase, GraduationCap, ShieldCheck } from 'lucide-react';
 
 const certifications = [
     {
@@ -47,21 +48,22 @@ const certifications = [
 
 const safetyColumns = [
     {
-        icon: '🧰',
+        icon: <Briefcase className="w-10 h-10" />,
         title: 'ATTREZZATURA CERTIFICATA',
         items: [
-            'Funi omologate EN 1891',
+            'Funi omologate <strong class="text-orange-500">EN 1891</strong>',
             'Imbracature professionali',
-            'Moschettoni certificati CE',
+            'Moschettoni certificati <strong class="text-orange-500">CE</strong>',
             'Dispositivi anticaduta',
             'Controlli periodici obbligatori',
         ],
     },
     {
-        icon: '📚',
+        icon: <GraduationCap className="w-10 h-10" />,
         title: 'FORMAZIONE CONTINUA',
+        isMain: true,
         items: [
-            'Corsi IRATA/FISAT regolari',
+            'Corsi <strong class="text-orange-500">IRATA/FISAT</strong> regolari',
             'Aggiornamenti normativi',
             'Training interno mensile',
             'Simulazioni emergenze',
@@ -69,14 +71,14 @@ const safetyColumns = [
         ],
     },
     {
-        icon: '✓',
+        icon: <ShieldCheck className="w-10 h-10" />,
         title: 'PROCEDURE RIGOROSE',
         items: [
             'Piano sicurezza per ogni lavoro',
             'Doppia verifica attrezzature',
             'Comunicazione radio costante',
             'Soccorso e primo soccorso',
-            'Documentazione completa',
+            '<strong class="text-orange-500">Documentazione completa</strong>',
         ],
     },
 ];
@@ -89,9 +91,8 @@ const Certifications: React.FC = () => {
             <style jsx>{`
                 @keyframes scroll {
                     0% { transform: translateX(0); }
-                    100% { transform: translateX(calc(-250px * 6 - 3rem * 6)); } /* Adjust based on card width + gap * count */
+                    100% { transform: translateX(calc(-250px * 6 - 3rem * 6)); }
                 } 
-                /* To scroll continuously, we likely need to duplicate items and simple translate */
                 @keyframes marquee {
                     0% { transform: translateX(0); }
                     100% { transform: translateX(-50%); } 
@@ -136,33 +137,44 @@ const Certifications: React.FC = () => {
                 </div>
             </div>
 
-            {/* Safety Section (Kept as requested context) */}
-            <div className="container mx-auto px-4">
-                <div className="max-w-5xl mx-auto">
-                    <h4 className="text-center text-2xl font-bold font-heading mb-10 text-gray-900">
-                        Il Nostro Impegno per la Sicurezza
-                    </h4>
+            {/* Safety Section - High-Tech Industrial Redesign */}
+            <div className="bg-[#1C1F26] py-24 mt-20 -mx-4 px-4 w-full">
+                <div className="container mx-auto">
+                    <div className="max-w-6xl mx-auto">
+                        <h4 className="text-center text-3xl font-bold font-heading mb-16 text-white tracking-widest uppercase">
+                            Il Nostro Impegno per la Sicurezza
+                        </h4>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {safetyColumns.map((col, index) => (
-                            <div
-                                key={index}
-                                className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300"
-                            >
-                                <div className="flex items-center mb-4">
-                                    <span className="text-3xl mr-3">{col.icon}</span>
-                                    <h5 className="font-bold text-sm font-heading text-gray-900">{col.title}</h5>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {safetyColumns.map((col, index) => (
+                                <div
+                                    key={index}
+                                    className={`
+                                        group relative p-8 rounded-lg transition-all duration-300
+                                        bg-[#252830] border
+                                        ${col.isMain
+                                            ? 'border-orange-500 border-2 shadow-[0_0_20px_rgba(255,107,0,0.15)] bg-gradient-to-b from-black/40 to-[#252830]'
+                                            : 'border-gray-700 hover:border-orange-500 hover:shadow-[0_0_15px_rgba(255,107,0,0.4)]'
+                                        }
+                                    `}
+                                >
+                                    <div className="flex items-center mb-6">
+                                        <span className={`text-orange-500 transition-transform duration-300 group-hover:scale-110`}>
+                                            {col.icon}
+                                        </span>
+                                        <h5 className="font-bold text-xl font-heading text-white tracking-wide ml-4">{col.title}</h5>
+                                    </div>
+                                    <ul className="space-y-4">
+                                        {col.items.map((item, i) => (
+                                            <li key={i} className="text-gray-300 text-sm flex items-start leading-relaxed">
+                                                <span className="text-orange-500 mr-3 mt-1.5 flex-shrink-0 text-[10px]">■</span>
+                                                <span dangerouslySetInnerHTML={{ __html: item }} />
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                                <ul className="space-y-2">
-                                    {col.items.map((item, i) => (
-                                        <li key={i} className="text-gray-600 text-sm flex items-start">
-                                            <span className="text-orange-500 mr-2 mt-0.5 flex-shrink-0">•</span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
