@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import HeroProjects from './components/HeroProjects';
 import WhyChooseUs from './components/WhyChooseUs';
 import Services from './components/Services';
 import HowWeWork from './components/HowWeWork';
 import About from './components/About';
 import Certifications from './components/Certifications';
-import FeaturedProjects from './components/FeaturedProjects';
+// import FeaturedProjects from './components/FeaturedProjects';
 import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
@@ -33,11 +33,10 @@ const App: React.FC = () => {
 
       <main>
         <section id="home">
-          <Hero />
+          <HeroProjects />
         </section>
 
-        {/* 1. Progetti in Evidenza (Moved here) */}
-        <FeaturedProjects />
+        {/* 1. Progetti in Evidenza (RIMOSSO - Ora è la Hero) */}
 
         {/* 2. Certificazioni (Moved here, before WhyChooseUs) */}
         <Certifications />
